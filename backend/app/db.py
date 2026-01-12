@@ -38,7 +38,8 @@ class Post(Base):
 
 engine = create_async_engine(
     DATABASE_URL,
-    pool_pre_ping=True, 
+    pool_pre_ping=True,
+    connect_args={"ssl": "require"} 
 )
                             
 Async_sessionmaker = async_sessionmaker(engine,expire_on_commit=False)
