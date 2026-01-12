@@ -56,7 +56,7 @@ const Feed: React.FC = () => {
         return;
       }
 
-      const response = await axios.get("http://localhost:8000/feed", {
+      const response = await api.get("/feed", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPosts(response.data);
@@ -102,7 +102,7 @@ const Feed: React.FC = () => {
     formData.append("caption", uploadCaption);
 
     try {
-      await api.post("http://localhost:8000/upload", formData, {
+      await api.post("/upload", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
