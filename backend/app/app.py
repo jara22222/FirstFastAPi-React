@@ -25,7 +25,7 @@ async def lifespan(app:FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 origins = [
-   "https://pixelshare-frontend.vercel.app",
+   "https://betapixelshare.vercel.app",
    "http://localhost:5173",
    "http://127.0.0.1:5173",
 ]
