@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import api from "./api/axios";
 import axios from "axios";
 import {
   Heart,
@@ -101,7 +102,7 @@ const Feed: React.FC = () => {
     formData.append("caption", uploadCaption);
 
     try {
-      await axios.post("http://localhost:8000/upload", formData, {
+      await api.post("http://localhost:8000/upload", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -127,7 +128,7 @@ const Feed: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8000/posts/${postId}`, {
+      await api.delete(`/posts/${postId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Remove from UI immediately

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
+import api from "./api/axios";
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const Register: React.FC = () => {
 
     try {
       // FastAPI-Users registration endpoint expects strict JSON
-      const response = await axios.post("http://localhost:8000/auth/register", {
+      const response = await api.post("/auth/register", {
         email: email,
         password: password,
         is_active: true,

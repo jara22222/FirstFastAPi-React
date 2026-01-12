@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "./api/axios";
 import {
   Mail,
   Lock,
@@ -30,13 +30,9 @@ const Login: React.FC = () => {
       formData.append("username", email);
       formData.append("password", password);
 
-      const response = await axios.post(
-        "http://localhost:8000/auth/jwt/login",
-        formData,
-        {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        }
-      );
+      const response = await api.post("/auth/jwt/login", formData, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
 
       localStorage.setItem("token", response.data.access_token);
       navigate("/feed");
